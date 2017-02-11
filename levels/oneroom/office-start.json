@@ -1,0 +1,143 @@
+{
+    "player_start": {
+        "pos": { "x": 3, "z": 6 },
+        "facing": 0
+    },
+    "level": [
+        [null,null,{"type":"wall","mats":["office-wall"]},
+            {"type":"wall","desc":"It's a lovely day.  60 and sunny.","mats":["office-wall-window"]},
+            {"type":"wall","mats":["office-wall"]},
+            {"type":"wall","mats":["office-wall"]},
+            {"type":"wall","mats":["office-wall"]},
+            {"type":"wall","desc":"I would much rather be out there.","mats":["office-wall-window"]},
+            {"type":"wall","mats":["office-wall"]}],
+        [null,{"type":"wall","mats":["office-wall"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"fobj","desc":"The office supplies.  I don't really need any more pens.","mats":["office-counter-supplies","drop_ceiling"],"extra":{"zways":true}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"sprite","mats":["office-chair","drop_ceiling"],"extra":{"offset-z":-1.2}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"cube_wall","mats":["cube-wall","cube-wall-cap"], "extra": { "rot": "z"}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"sprite","mats":["office-chair","drop_ceiling"],"extra":{"offset-z":-1.2}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"sprite","mats":["office-chair","drop_ceiling"],"extra":{"offset-z":-1.2}}}},
+            {"type":"wall","mats":["office-wall"]}],
+        [null,{"type":"wall","mats":["office-wall"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"fobj","desc":"I don't know how Pete stands all the noise this thing makes.","mats":["office-counter-printer","drop_ceiling"],"extra":{"zways":true}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling_lights"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"fobj","desc":"This is where Pete sits.  He's always policing the office supplies, like he pays for them.", "mats":["office-desk","drop_ceiling"],"extra":{"rot":0.6}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"cube_wall","mats":["cube-wall","cube-wall-cap"], "extra": { "rot": "z"}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"fobj","desc":"My desk.  I wish I was anywhere else today.",
+                "mats":["office-desk-yours","drop_ceiling"],"extra":{"rot":-0.6, "trigger":"phone-call"}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling_lights"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"fobj","desc":"I guess I won't have to deal with Carl coming down to yack with Ron all day.","mats":["office-desk","drop_ceiling"],"extra":{"rot":0.6}}}},
+            {"type":"wall","mats":["office-wall"]}],
+        [null,{"type":"wall","mats":["office-wall"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"fobj","mats":["office-counter-coffee","drop_ceiling"],"extra":{"zways":true, "trigger":"no-coffee"}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"cube_wall","mats":["cube-wall","cube-wall-cap"], "extra": { "rot": "x"}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"double_cube_wall","mats":["cube-wall","cube-wall-cap"], "extra": { "rot": "z"}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"cube_wall","mats":["cube-wall","cube-wall-cap"], "extra": { "rot": "x"}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"cube_wall","mats":["cube-wall","cube-wall-cap"], "extra": { "rot": "x"}}}},
+            {"type":"wall","mats":["office-wall"]}],
+        [null,{"type":"wall","mats":["office-wall"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"fobj","desc":"The hot only gets luke-warm.","mats":["office-counter-sink","drop_ceiling"],"extra":{"zways":true}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling_lights"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"fobj","desc":"Michael sits here.  I've never said it, but he looks like an eggplant.","mats":["office-desk","drop_ceiling"],"extra":{"rot":-0.6}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"cube_wall","mats":["cube-wall","cube-wall-cap"], "extra": { "rot": "z"}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"fobj","desc":"Linda sits here.  She wears so much perfume I can barely breathe when she's here.","mats":["office-desk","drop_ceiling"],"extra":{"rot":0.6}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling_lights"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"fobj","desc":"Ravi's visa expired last month.  I hope we can find someone else as competent as he was.","mats":["office-desk","drop_ceiling"],"extra":{"rot":-0.6}}}},
+            {"type":"wall","mats":["office-wall"]}],
+        [null,{"type":"wall","mats":["office-wall"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"fobj","desc":"The note says: 'This will be cleaned out on 12/22.'  I guess they forgot.","mats":["office-fridge","drop_ceiling"],"extra":{"zways":true}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"sprite","mats":["office-chair","drop_ceiling"],"extra":{"offset-z":1.2}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"cube_wall","mats":["cube-wall","cube-wall-cap"], "extra": { "rot": "z"}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"sprite","mats":["office-chair","drop_ceiling"],"extra":{"offset-z":1.2}}}},
+            {"type":"espace","mats":["office-floor","drop_ceiling"], "extra": {
+                "event": "opening-blurb", "once": true, "key": "start" }
+            },
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":{"type":"sprite","mats":["office-chair","drop_ceiling"],"extra":{"offset-z":1.2}}}},
+            {"type":"wall","mats":["office-wall"]}],
+        [null,{"type":"wall","mats":["office-wall"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"],"extra":{"object":
+                {"type":"sprite","desc":"Apparently it helps the feng shui.","mats":["plant","drop_ceiling"],"extra":{"solid":true}}}},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
+            {"type":"enclosed","mats":["office-floor","drop_ceiling"]},
+            {"type":"wall","mats":["office-wall"]}],
+        [null,null,{"type":"wall","mats":["office-wall-blue"]},
+            {"type":"wall","desc":"I can't leave until 5.","mats":["office-wall-blue-door"]},
+            {"type":"wall","desc":"9 o'clock.  I've got the whole day ahead of me.","mats":["office-wall-blue-clock-9"]},
+            {"type":"wall","mats":["office-wall-blue"]},
+            {"type":"wall","mats":["office-wall-blue"]},
+            {"type":"wall","mats":["office-wall-blue"]},
+            {"type":"wall","mats":["office-wall-blue"]}]
+    ],
+    "persisted": {
+        "got-phone": false,
+        "start": true
+    },
+    "dialog": {
+        "start": [
+            { "msg": "The last Friday in December." },
+            { "msg": "Everyone else in this office is on vacation.." },
+            { "msg": "..." },
+            { "speaker": "phone", "msg": "*ring ring*" },
+            { "msg": "..and I bet that's my phone ringing" }
+        ],
+        "phone-call": [
+            { "msg": "hello?" },
+            { "speaker": "phone", "msg": "Hello, $name.  Don't forget that I need that report before the holiday." },
+            { "msg": "yes, of course.  I'll have it done by the end of the day." },
+            { "speaker": "phone", "msg": "Good, good.  Don't think that just because you're the only person in the office you can slack off all day." },
+            { "msg": "Of course not sir." },
+            { "speaker": "phone", "msg": "Great, thanks!" },
+            { "speaker": "phone", "emote": "loud", "msg": "*click*" },
+            { "msg": "*sigh*" },
+            { "msg": "..I'm gonna need some coffee for this." }
+        ],
+        "no-coffee": [
+            { "msg": "Ew, the coffee pot's still full. This must be from yesterday.." },
+            { "msg": "Don't worry, I'll take care of it." },
+            { "msg": "..." },
+            { "msg": "Now, to make more..." },
+            { "msg": "..." },
+            { "msg": "Oh great, we're out of coffee." },
+            { "type": "event", "target": "transition_level", "detail": { "to": "/levels/oneroom/daydream-docks",
+                "player_pos": { "x": 8, "z": 14 }, "player_facing": 1 } }
+        ]
+    },
+    "events": {
+        "level-start": {
+            "type": "dialog",
+            "dialog": "start",
+            "once": true
+        },
+        "phone-call": {
+            "type": "dialog",
+            "dialog": "phone-call",
+            "once": true
+        },
+        "no-coffee": {
+            "type": "dialog",
+            "dialog": "no-coffee",
+            "once": true,
+            "requirements": [ "phone-call" ]
+        }
+    }
+}

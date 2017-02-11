@@ -1,0 +1,96 @@
+$body_bg: lightgrey;
+$canvas-width: 600;
+$canvas-height: 500;
+$touch-button-width: 200;
+
+body {
+    background-color: $body_bg;
+    #textbox {
+        background-color: black;
+        color: white;
+        overflow: scroll;
+        height: 50px;
+
+        p {
+            margin-bottom: 0px;
+            padding-bottom: 0px;
+        }
+    }
+
+    #canvas_goes_here {
+        canvas {
+            width: 100%;
+            height: 500px;
+        }
+
+        .text-particle {
+            position: absolute;
+            zIndex: -200;
+            font-size: xx-large;
+        }
+
+        .dialog-box {
+            position: absolute;
+            width: 540px;
+            height: 100px;
+            color: white;
+            background-color: black;
+            padding: 5px;
+            top: 380px;
+            left: 20px;
+            zIndex: -100;
+
+            img {
+                display: block;
+                width: 90px;
+                height: 90px;
+                float: left;
+                background-color: grey;
+            }
+
+            .right {
+                float: right;
+            }
+
+            span {
+                display: block;
+                height: 100%;
+                max-width: 440px;
+                float: left;
+                padding: 20px;
+                font-size: larger;
+            }
+        }
+
+        .dialog-choice {
+            position: absolute;
+            width: 200px;
+            height: 250px;
+            color: white;
+            background-color: black;
+            padding: 5px;
+            top: 120px;
+            left: 360px;
+            zIndex: -200;
+
+            .choice {
+                padding-left: 10px;
+            }
+
+            .selected::before {
+                content: ' > ';
+            }
+        }
+    }
+
+    #left-sidebar {
+        background-color: red;
+    }
+
+    #right-sidebar {
+        background-color: blue;
+    }
+
+}
+
+@import 'editor.scss'
