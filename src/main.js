@@ -50,7 +50,7 @@ for(let x=-5; x<6; x++) {
     }
 }
 
-const hl = new Highlight(0,0,scene);
+const highlight = new Highlight(0,0,scene);
 
 /// Render
 const startTime = new Date().getTime();
@@ -61,4 +61,38 @@ function render() {
 }
 render();
 
+let cpos = 0;
+window.addEventListener('keydown', (e) => {
+    if(e.key ==  'c') {
+        cpos++;
+        if(cpos > 2) { cpos = 0; }
+        cam.position(cpos);
+    }
+});
+
+let mouse = new THREE.Vector2();
+
+window.addEventListener('mousemove', (e) => {
+    let cpos = canvas.getBoundingClientRect();
+    mouse.x = ( (e.clientX  - cpos.left) / width) * 2 - 1;
+    mouse.y = - ( (e.clientY - cpos.top) / height ) * 2 + 1;
+}, false);
+
+function unproject(e) {
+    console.log(mouse);
+    let rc = new THREE.Raycaster();
+    rc.setFromCamera(mouse, cam.camera);
+    let intersects = rc.intersectObjects(scene.children);
+
+    if(intersects && intersects[0]) {
+        let pos = intersects[0].point;
+        highlight.mesh.position.x = Math.round(pos.x);
+        highlight.mesh.position.z = Math.round(pos.z);
+    }
+
+}
+
+canvas.addEventListener('click', (e) => {
+    unproject(e);
+});
 
