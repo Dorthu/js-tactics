@@ -42,15 +42,17 @@ const cam = new Camera();
 /// Do level creation here
 
 const spaces = [];
+const grid_group = new THREE.Object3D();
+scene.add(grid_group);
 
 const unit = new Unit(0,0, 'baddie', scene);
 for(let x=-5; x<6; x++) {
     for(let z=-5; z<6; z++) {
-        spaces.push(new Space(x,z, 'grass', scene));
+        spaces.push(new Space(x,z, 'grass', 'brick', grid_group));
     }
 }
 
-const highlight = new Highlight(0,0,scene);
+//const highlight = new Highlight(0,0,scene);
 
 /// Render
 const startTime = new Date().getTime();
@@ -82,12 +84,14 @@ function unproject(e) {
     console.log(mouse);
     let rc = new THREE.Raycaster();
     rc.setFromCamera(mouse, cam.camera);
-    let intersects = rc.intersectObjects(scene.children);
+    let intersects = rc.intersectObjects(grid_group.children);
 
     if(intersects && intersects[0]) {
-        let pos = intersects[0].point;
-        highlight.mesh.position.x = Math.round(pos.x);
-        highlight.mesh.position.z = Math.round(pos.z);
+        let obj = intersects[0].object;
+        console.log('clicked a thing');
+        console.log(obj);
+        console.log(obj.gamedata);
+        obj.gamedata.select();
     }
 
 }
