@@ -21,7 +21,7 @@ export default class Camera {
             this.loc = { x: 5, y: 1, z: 5 };
 
 //        this.camera = new THREE.PerspectiveCamera( 70, 750/500, 1, 1000);
-        this.camera = new THREE.OrthographicCamera(750 / - 2, 750 / 2, 500 / 2, 500 / - 2, 1, 1000 );
+        this.camera = new THREE.OrthographicCamera(750 / - 2, 750 / 2, 500 / 2, 500 / - 2, 0, 1000 );
         this.camera.zoom = 80;
         this.camera.updateProjectionMatrix();
 
