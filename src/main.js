@@ -7,6 +7,7 @@ import Unit from './unit'
 import Highlight from './hightlight'
 import Grid from './grid'
 import TurnController from './turn_controller'
+import UnitInfo from './unit_info'
 
 /// Make a canvas
 const canvas = document.createElement('canvas')
@@ -46,11 +47,15 @@ scene.add(light);
 const cam = new Camera();
 scene.gamedata.cam = cam;
 
+const right_info = new UnitInfo();
+
 /// Do level creation here
 const grid = new Grid(scene);
 scene.gamedata.grid = grid;
 
-const unit = new Unit(0,0, 'baddie', scene);
+const unit = new Unit('baddie', scene);
+grid.add_unit(unit, 5, 5);
+right_info.update(unit);
 
 const turn_controller = new TurnController(scene);
 

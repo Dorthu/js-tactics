@@ -1,3 +1,4 @@
 node_modules/
 bundle.js
 ref/
+npm-debug.log*

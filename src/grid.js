@@ -4,28 +4,48 @@
 import { THREE } from './Three'
 import Space from './space'
 
-class Grid {
+export default class Grid {
     constructor(scene) {
         this.scene = scene;
         this.grid_group = new THREE.Object3D();
         this.scene.add(this.grid_group);
 
-        this.create_test_grid(); /// TODO 
+        this.spaces = [];
+        this.objects = [];
+        this.create_test_grid(); /// TODO
     }
 
     /*
      * Makes a simple grid of grass terrain spaces for testing.
      */
     create_test_grid() {
-        this.spaces = [];
-
         for(let x=-5; x<6; x++) {
             let row = [];
             for(let z=-5; z<6; z++) {
                 row.push(new Space(x,z, 'grass', 'brick', 'woodfloor', this.grid_group));
             }
             this.spaces.push(row);
+            this.objects.push([ ,,,, ]);
         }
+
+    }
+
+    add_unit(unit, x, y) {
+        this.objects[x, y] = unit;
+        const [ tx, tz ] = this.translate(x, y);
+
+        console.log(`setting unit position to ${tx}, ${tz}`);
+
+        unit.mesh.position.x = tx;
+        unit.mesh.position.z = tz;
+    }
+
+    translate(x, y) {
+        return [x-5, y-5];
+    }
+
+    untranslate(x, y) {
+        return [x+5, y+5];
     }
 
     clear_selection() {
@@ -48,5 +68,3 @@ class Grid {
     }
 
 }
-
-export default Grid;

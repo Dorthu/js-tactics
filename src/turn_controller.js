@@ -4,7 +4,7 @@
  */
 import { THREE } from './Three'
 
-class TurnController {
+export default class TurnController {
     constructor(scene) {
         this.scene = scene;
     }
@@ -18,7 +18,8 @@ class TurnController {
 
         if(selection) {
             if(selection.selected) {
-                this.scene.gamedata.grid.highlight_around(selection.x+5, selection.z+5, 3);
+                this.scene.gamedata.grid.highlight_around(
+                        ...this.scene.gamedata.grid.untranslate(selection.x, selection.z), 3);
             } else {
                 this.scene.gamedata.grid.clear_selection();
                 selection.select();
@@ -40,5 +41,3 @@ class TurnController {
 
     }
 }
-
-export default TurnController;
