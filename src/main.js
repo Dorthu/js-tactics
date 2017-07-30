@@ -4,7 +4,6 @@ import { init_textures } from './texture_lookup'
 import assign from 'object-assign'
 import Camera from './camera'
 import Unit from './unit'
-import Highlight from './hightlight'
 import Grid from './grid'
 import TurnController from './turn_controller'
 import UnitInfo from './unit_info'
@@ -60,14 +59,12 @@ grid.add_unit(unit, 7, 5);
 
 const another_unit = new Unit('dog', scene);
 another_unit.name = 'Zoey';
-another_unit.move = 2;
+another_unit.move = 5;
 grid.add_unit(another_unit, 6, 4);
 
 right_info.update();
 
 const turn_controller = new TurnController(scene);
-
-//const highlight = new Highlight(0,0,scene);
 
 /// Render
 const startTime = new Date().getTime();
