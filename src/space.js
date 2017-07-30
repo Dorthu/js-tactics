@@ -23,6 +23,7 @@ export default class Space {
         this.scene.add(this.mesh);
 
         this.selected = false;
+        this.highlighted = false;
     }
 
     select() {
@@ -33,9 +34,11 @@ export default class Space {
     deselect() {
         this.mesh.material = this.normal_mat;
         this.selected = false;
+        this.highlighted = false;
     }
 
     highlight() {
+        this.highlighted = true;
         this.mesh.material = this.highlight_mat;
     }
 }

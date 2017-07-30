@@ -47,15 +47,23 @@ scene.add(light);
 const cam = new Camera();
 scene.gamedata.cam = cam;
 
-const right_info = new UnitInfo();
-
 /// Do level creation here
 const grid = new Grid(scene);
 scene.gamedata.grid = grid;
 
+const right_info = new UnitInfo(scene);
+scene.gamedata.unit_info = right_info;
+
 const unit = new Unit('baddie', scene);
-grid.add_unit(unit, 5, 5);
-right_info.update(unit);
+unit.name = 'Rogue'
+grid.add_unit(unit, 7, 5);
+
+const another_unit = new Unit('dog', scene);
+another_unit.name = 'Zoey';
+another_unit.move = 2;
+grid.add_unit(another_unit, 6, 4);
+
+right_info.update();
 
 const turn_controller = new TurnController(scene);
 

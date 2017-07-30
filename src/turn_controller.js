@@ -17,12 +17,23 @@ export default class TurnController {
         let selection = this.__unproject(e);
 
         if(selection) {
-            if(selection.selected) {
-                this.scene.gamedata.grid.highlight_around(
-                        ...this.scene.gamedata.grid.untranslate(selection.x, selection.z), 3);
+            const unit = this.scene.gamedata.grid.get_selected_unit();
+            if(selection.highlighted) {
+                if(unit) {
+                    this.scene.gamedata.grid.move_unit(unit,
+                            ...this.scene.gamedata.grid.untranslate(selection.x, selection.z));
+                    this.scene.gamedata.grid.clear_selection();
+                }
+            } else if(selection.selected) {
+                if(unit) {
+                    this.scene.gamedata.grid.highlight_around(
+                            ...this.scene.gamedata.grid.untranslate(selection.x, selection.z), unit.move);
+                }
             } else {
-                this.scene.gamedata.grid.clear_selection();
-                selection.select();
+                this.scene.gamedata.grid.select(
+                        ...this.scene.gamedata.grid.untranslate(selection.x, selection.z),
+                        true);
+                this.scene.gamedata.unit_info.update();
             }
         }
     }

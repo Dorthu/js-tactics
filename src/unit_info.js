@@ -1,22 +1,29 @@
 class UnitInfo {
-    constructor() {
-        self.element = document.getElementById('right-sidebar');
+    constructor(scene) {
+        this.scene = scene;
+
+        this.element = document.getElementById('right-sidebar');
         let title = document.createElement('i');
         title.text = 'Unit Details';
-        self.info_pane = document.createElement('div');
+        this.info_pane = document.createElement('div');
 
-        self.element.appendChild(title);
-        self.element.appendChild(info_pane);
+        this.element.appendChild(title);
+        this.element.appendChild(this.info_pane);
     }
 
-    update(unit) {
+    update(unit=null) {
+        console.log(`Updating with ${unit}`);
+        if(!unit) { unit = this.scene.gamedata.grid.get_selected_unit(); }
+        console.log(`Now its ${unit}`);
+        if(!unit) { return; } /// TODO
+
         let info = `<b>Name:</b> ${unit.name}`;
         info += '<br/>';
         info += `<b>Move:</b> ${unit.move}`;
         info += '<br/>';
         info += `<b>Attack:</b> ${unit.attack}`;
 
-        info_pane.innerHTML = info;
+        this.info_pane.innerHTML = info;
     }
 }
 

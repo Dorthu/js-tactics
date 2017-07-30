@@ -9,6 +9,7 @@ export default class Grid {
         this.scene = scene;
         this.grid_group = new THREE.Object3D();
         this.scene.add(this.grid_group);
+        this.selection = [ null, null ];
 
         this.spaces = [];
         this.objects = [];
@@ -25,19 +26,43 @@ export default class Grid {
                 row.push(new Space(x,z, 'grass', 'brick', 'woodfloor', this.grid_group));
             }
             this.spaces.push(row);
-            this.objects.push([ ,,,, ]);
+            this.objects.push([ ,,,,,,,,,, ]);
         }
 
     }
 
+    move_unit(unit, to_x, to_y) {
+        /// Just remove then add for "move"
+        this.remove_unit(unit);
+        this.add_unit(unit, to_x, to_y);
+    }
+
     add_unit(unit, x, y) {
-        this.objects[x, y] = unit;
+        this.objects[x][y] = unit;
         const [ tx, tz ] = this.translate(x, y);
 
         console.log(`setting unit position to ${tx}, ${tz}`);
 
         unit.mesh.position.x = tx;
         unit.mesh.position.z = tz;
+    }
+
+    remove_unit(unit) {
+        const [ x, y ] = this.untranslate(unit.mesh.position.x, unit.mesh.position.z);
+        console.log(`Removing unit from ${x}, ${y}`);
+
+        this.objects[x][y] = null;
+    }
+
+    get_selected_unit() {
+        console.log(this.selection);
+        const [ x, y ] = this.selection;
+        console.log(`Selection is ${x}, ${y}`);
+        if(x == null) { console.log('x was null'); return null; }
+        console.log(this.objects);
+        console.log(this.objects[x]);
+        console.log(this.objects[y]);
+        return this.objects[x][y];
     }
 
     translate(x, y) {
@@ -48,7 +73,17 @@ export default class Grid {
         return [x+5, y+5];
     }
 
+    select(x, y, clear=false) {
+        console.log(`selecting ${x}, ${y}`);
+        if(clear) { this.clear_selection(); }
+
+        this.selection = [x, y];
+        this.spaces[x][y].select();
+    }
+
     clear_selection() {
+        this.selection = [ null, null ];
+
         for(let sp of this.grid_group.children) {
             sp.gamedata.deselect();
         }
