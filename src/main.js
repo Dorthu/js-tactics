@@ -53,7 +53,7 @@ scene.gamedata.grid = grid;
 const right_info = new UnitInfo(scene);
 scene.gamedata.unit_info = right_info;
 
-const unit = new Unit('baddie', scene);
+const unit = new Unit('initial_test', scene);
 unit.name = 'Rogue'
 grid.add_unit(unit, 7, 5);
 
