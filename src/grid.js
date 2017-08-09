@@ -89,6 +89,13 @@ export default class Grid {
         }
     }
 
+    /*
+     * Highlights an area around x, y that can be moved to in range space
+     */
+    highlight_range_from(x, y, range) {
+        /// TODO
+    }
+
     highlight_around(x, y, radius) {
         console.log(`highliginting around ${x}, ${y}`);
         for(let cx=0; cx < this.spaces.length; cx++) {

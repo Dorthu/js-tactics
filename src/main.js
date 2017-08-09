@@ -69,6 +69,7 @@ const turn_controller = new TurnController(scene);
 /// Render
 const startTime = new Date().getTime();
 function render() {
+    turn_controller.tick(); /// more advanced ticking here
     requestAnimationFrame( render );
     renderer.clear();
     renderer.render( scene, cam.camera );
