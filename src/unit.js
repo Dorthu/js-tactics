@@ -15,5 +15,10 @@ export default class Unit {
         this.move = 3;
         this.attack = 1;
         
+        this.team = 0;
+    }
+
+    blocks(unit=null) {
+        return true;
     }
 }

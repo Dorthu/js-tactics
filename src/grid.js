@@ -89,11 +89,25 @@ export default class Grid {
         }
     }
 
+    blocked(x, y, for_unit=null) {
+        if(x < 0 || x >= this.objects.length ||
+                y < 0 || y >= this.objects[x].lenght) {
+            return true; //if this isn't in the grid, it's blocked
+        }
+
+        /// if there's nothing there, we're open
+        if(!this.objects[x][y]) return false;
+
+        return this.objects[x][y].blocks(for_unit);
+    }
+
     /*
      * Highlights an area around x, y that can be moved to in range space.
      * Expects x and y to have been untranslated already.
+     * If unit is given, only shows spaces as blocked if they are blocked for
+     * that unit (usually based on team).
      */
-    highlight_range_from(x, y, range) {
+    highlight_range_from(x, y, range, unit=null) {
         ///TODO - error if x,y isn't on grid
         const allowed_spaces = new Set();
         let frontier = [];
@@ -108,7 +122,7 @@ export default class Grid {
             for(const { x :dx, y :dy } of dirs) {
                 if(x+dx >= 0 && x+dx < this.spaces.length &&
                         y+dy >= 0 && y+dy < this.spaces[x+dx].length) {
-                    if(!this.spaces[x+dx][y+dy].blocked()) {
+                    if(!this.blocked(x+dx, y+dy, unit)) {
                         ret.push(this.spaces[x+dx][y+dy]);
                     }
                 }
