@@ -41,4 +41,8 @@ export default class Space {
         this.highlighted = true;
         this.mesh.material = this.highlight_mat;
     }
+
+    blocked() {
+        return false;
+    }
 }

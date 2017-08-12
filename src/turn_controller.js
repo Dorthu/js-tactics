@@ -18,6 +18,9 @@ export default class TurnController {
         this._do_selection(e);
     }
 
+    /*
+     * Handle mouse tracking selection.
+     */
     _do_tracking() {
         if(!this.selection_mode) return;
 
@@ -28,9 +31,13 @@ export default class TurnController {
             this.scene.gamedata.grid.select(
                     ...this.scene.gamedata.grid.untranslate(selection.x, selection.z),
                     true);
+            this.scene.gamedata.unit_info.update();
         }
     }
 
+    /*
+     * Do selection based on clicking.
+     */
     _do_selection(e) {
         let selection = this.__unproject();
 
@@ -45,7 +52,7 @@ export default class TurnController {
                 }
             } else if(selection.selected) {
                 if(unit) {
-                    this.scene.gamedata.grid.highlight_around(
+                    this.scene.gamedata.grid.highlight_range_from(
                             ...this.scene.gamedata.grid.untranslate(selection.x, selection.z), unit.move);
                     this.selection_mode = false;
                 }
