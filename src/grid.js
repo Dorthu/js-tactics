@@ -1,8 +1,6 @@
 /*
  * Responsible for loading and managing the grid of spaces.
  */
-import PriorityQueue from 'priorityqueuejs'
-
 import { THREE } from './Three'
 import Space from './space'
 
@@ -98,8 +96,8 @@ export default class Grid {
     highlight_range_from(x, y, range) {
         ///TODO - error if x,y isn't on grid
         const allowed_spaces = new Set();
-        let frontier = new PriorityQueue(function(a, b) { return a.priority - b.priority; });
-        frontier.enq({ val: this.spaces[x][y], priority: 1 });
+        let frontier = [];
+        frontier.push({ val: this.spaces[x][y], priority: 1 });
         let cost_so_far = {};
 
         cost_so_far[`${x}:${y}`] = 0;
@@ -108,43 +106,33 @@ export default class Grid {
         const _get_neighbors = (x, y) => {
             const ret = [];
             for(const { x :dx, y :dy } of dirs) {
-                console.log(`looking at neighbor ${dx}, ${dy} of ${x}, ${y}`);
                 if(x+dx >= 0 && x+dx < this.spaces.length &&
                         y+dy >= 0 && y+dy < this.spaces[x+dx].length) {
-                    console.log('check 1');
                     if(!this.spaces[x+dx][y+dy].blocked()) {
-                        console.log('check 2');
                         ret.push(this.spaces[x+dx][y+dy]);
                     }
                 }
             }
-            console.log(`neighbors returning ${ret}`);
             return ret;
         };
 
-        while(frontier.size()) {
-            let { val :cur } = frontier.deq();
-            console.log('cur is'); console.log(cur);
+        while(frontier.length) {
+            let { val :cur } = frontier.shift();
             let [ cx, cy ] = this.untranslate(cur.x, cur.z);
-            console.log(`looking at ${cx}, ${cy}`);
 
             for(let next of _get_neighbors(cx, cy)) {
                 let new_cost = cost_so_far[`${cx}:${cy}`] ? cost_so_far[`${cx}:${cy}`] + 1 : 1;
-                console.log(`looking at ${next} at ${cx}, ${cy}, new_cost ${new_cost}`);
                 if(new_cost > range) { continue; }
                 allowed_spaces.add(next);
-                console.log('next is');
-                console.log(next);
                 const [ next_x, next_y ] = this.untranslate(next.x, next.z);
                 if(!cost_so_far[`${next_x}:${next_y}`] || new_cost < cost_so_far[`${next_x}:${next_y}`]) {
                     cost_so_far[`${next_x}:${next_y}`] = new_cost;
-                    frontier.enq({ val: next, priority: new_cost });
+                    frontier.push({ val: next, priority: new_cost });
                 }
             }
         }
 
         for(let c of allowed_spaces) {
-            //if(!c) continue;
             c.highlight();
         }
 
