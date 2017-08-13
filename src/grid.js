@@ -2,6 +2,7 @@
  * Responsible for loading and managing the grid of spaces.
  */
 import { THREE } from './Three'
+import Unit from './unit'
 import Space from './space'
 
 export default class Grid {
@@ -55,14 +56,14 @@ export default class Grid {
     }
 
     get_selected_unit() {
-        console.log(this.selection);
         const [ x, y ] = this.selection;
-        console.log(`Selection is ${x}, ${y}`);
         if(x == null) { console.log('x was null'); return null; }
-        console.log(this.objects);
-        console.log(this.objects[x]);
-        console.log(this.objects[y]);
-        return this.objects[x][y];
+        const ret = this.objects[x][y];
+
+        if(ret instanceof Unit) {
+            return ret;
+        }
+        return null;
     }
 
     translate(x, y) {

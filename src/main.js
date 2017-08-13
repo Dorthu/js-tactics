@@ -7,6 +7,7 @@ import Unit from './unit'
 import Grid from './grid'
 import TurnController from './turn_controller'
 import UnitInfo from './unit_info'
+import Terrain from './terrain'
 
 /// Make a canvas
 const canvas = document.createElement('canvas')
@@ -61,6 +62,9 @@ const another_unit = new Unit('dog', scene);
 another_unit.name = 'Zoey';
 another_unit.move = 5;
 grid.add_unit(another_unit, 6, 4);
+
+const tree = new Terrain('bush', scene);
+grid.add_unit(tree, 4, 4);
 
 right_info.update();
 

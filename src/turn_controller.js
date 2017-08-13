@@ -53,7 +53,7 @@ export default class TurnController {
             } else if(selection.selected) {
                 if(unit) {
                     this.scene.gamedata.grid.highlight_range_from(
-                            ...this.scene.gamedata.grid.untranslate(selection.x, selection.z), unit.move);
+                            ...this.scene.gamedata.grid.untranslate(selection.x, selection.z), unit.move, unit);
                     this.selection_mode = false;
                 }
             } else {
