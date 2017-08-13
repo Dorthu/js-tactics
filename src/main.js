@@ -64,12 +64,17 @@ grid.add_unit(unit, 7, 5);
 
 const another_unit = new Unit('dog', scene);
 another_unit.name = 'Zoey';
-another_unit.move = 5;
+another_unit.move = 4;
 another_unit.profile = '/resources/sprites/dog.png';
 grid.add_unit(another_unit, 6, 4);
 
 const tree = new Terrain('bush', scene);
 grid.add_unit(tree, 4, 4);
+
+grid.add_unit(new Terrain('bush', scene), 2, 3);
+grid.add_unit(new Terrain('bush', scene), 2, 4);
+grid.add_unit(new Terrain('bush', scene), 3, 4);
+grid.add_unit(new Terrain('bush', scene), 6, 7);
 
 right_info.update();
 
