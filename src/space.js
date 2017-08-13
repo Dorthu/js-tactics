@@ -24,6 +24,11 @@ export default class Space {
 
         this.selected = false;
         this.highlighted = false;
+
+        /// space info
+        this.profile = '/resources/textures/grass.png'; /// TODO
+        this.name = 'Grass';
+        this.movement = 1;
     }
 
     select() {

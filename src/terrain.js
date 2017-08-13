@@ -12,5 +12,10 @@ export default class Terrain extends GridObject{
         this.scene.add(this.mesh);
 
         this.solid = true;
+
+        /// terrain info
+        this.profile = '/resources/sprites/bush.png'; /// TODO
+        this.name = 'Bush';
+        this.movement = 0; /// solid
     }
 }

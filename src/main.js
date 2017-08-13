@@ -6,6 +6,7 @@ import Camera from './camera'
 import Unit from './unit'
 import Grid from './grid'
 import TurnController from './turn_controller'
+import TerrainInfo from './terrain_info'
 import UnitInfo from './unit_info'
 import Terrain from './terrain'
 
@@ -53,14 +54,18 @@ scene.gamedata.grid = grid;
 
 const right_info = new UnitInfo(scene);
 scene.gamedata.unit_info = right_info;
+const left_info = new TerrainInfo(scene);
+scene.gamedata.terrain_info = left_info;
 
 const unit = new Unit('initial_test', scene);
 unit.name = 'Rogue'
+unit.profile = '/resources/dialog/guardian/happy.png';
 grid.add_unit(unit, 7, 5);
 
 const another_unit = new Unit('dog', scene);
 another_unit.name = 'Zoey';
 another_unit.move = 5;
+another_unit.profile = '/resources/sprites/dog.png';
 grid.add_unit(another_unit, 6, 4);
 
 const tree = new Terrain('bush', scene);

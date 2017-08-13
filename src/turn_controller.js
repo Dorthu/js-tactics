@@ -32,6 +32,7 @@ export default class TurnController {
                     ...this.scene.gamedata.grid.untranslate(selection.x, selection.z),
                     true);
             this.scene.gamedata.unit_info.update();
+            this.scene.gamedata.terrain_info.update();
         }
     }
 

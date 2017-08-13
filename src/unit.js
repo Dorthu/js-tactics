@@ -16,6 +16,7 @@ export default class Unit extends GridObject {
         this.name = 'test';
         this.move = 3;
         this.attack = 1;
+        this.profile = '';
 
         this.team = 0;
     }

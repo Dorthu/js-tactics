@@ -4,6 +4,7 @@
 import { THREE } from './Three'
 import Unit from './unit'
 import Space from './space'
+import Terrain from './terrain'
 
 export default class Grid {
     constructor(scene) {
@@ -64,6 +65,18 @@ export default class Grid {
             return ret;
         }
         return null;
+    }
+
+    /*
+     * Returns the selected terrain if any is present, or the selected space if it isn't
+     */
+    get_selected_terrain() {
+        const [ x, y ] = this.selection;
+        if(x == null) { return null; }
+        const ret = this.objects[x][y];
+
+        if(ret instanceof Terrain) return ret;
+        return this.spaces[x][y];
     }
 
     translate(x, y) {

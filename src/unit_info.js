@@ -1,4 +1,4 @@
-class UnitInfo {
+export default class UnitInfo {
     constructor(scene) {
         this.scene = scene;
 
@@ -12,12 +12,11 @@ class UnitInfo {
     }
 
     update(unit=null) {
-        console.log(`Updating with ${unit}`);
         if(!unit) { unit = this.scene.gamedata.grid.get_selected_unit(); }
-        console.log(`Now its ${unit}`);
-        if(!unit) { return; } /// TODO
+        if(!unit) { this.info_pane.innerHTML = ''; return; } /// TODO - better empty profile?
 
-        let info = `<b>Name:</b> ${unit.name}`;
+        let info = `<img src="${unit.profile}"/><br/>`;
+        info += `<b>Name:</b> ${unit.name}`;
         info += '<br/>';
         info += `<b>Move:</b> ${unit.move}`;
         info += '<br/>';
@@ -26,5 +25,3 @@ class UnitInfo {
         this.info_pane.innerHTML = info;
     }
 }
-
-export default UnitInfo;
