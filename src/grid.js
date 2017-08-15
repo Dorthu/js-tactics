@@ -25,7 +25,7 @@ export default class Grid {
         for(let x=-5; x<6; x++) {
             let row = [];
             for(let z=-5; z<6; z++) {
-                row.push(new Space(x,z, 'grass', 'brick', 'woodfloor', this.grid_group));
+                row.push(new Space(x,z, (z % 3) ? 'grass' : 'sidewalk', this.grid_group));
             }
             this.spaces.push(row);
             this.objects.push([ ,,,,,,,,,, ]);

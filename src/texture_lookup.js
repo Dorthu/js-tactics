@@ -2,6 +2,9 @@ import { THREE } from './Three'
 
 export let mat_map = null;
 
+const HIGHLIGHT_COLOR = 0x0000FF;
+const SELECTED_COLOR = 0x890000;
+
 function load_texture(file) {
     let t = new THREE.TextureLoader().load(file);
     t.magFilter = THREE.NearestFilter;
@@ -17,6 +20,13 @@ function make_material(texture, type) {
         return new THREE.MeshLambertMaterial({map: texture, side: THREE.DoubleSide, transparent: true});
     } else if(type == 'skybox') {
         return new THREE.MeshBasicMaterial({map: texture, side: THREE.BackSide});
+    } else if(type == 'grid') { /// these are special textures that need highligh and selected materials
+        const normal = new THREE.MeshLambertMaterial({ map: texture, side: THREE.SingleSide });
+        const highlight = new THREE.MeshLambertMaterial({ map: texture, side: THREE.SingleSide });
+        highlight.emissive.setHex(HIGHLIGHT_COLOR);
+        const selected = new THREE.MeshLambertMaterial({ map: texture, side: THREE.SingleSide });
+        selected.emissive.setHex(SELECTED_COLOR);
+        return [ normal, highlight, selected ];
     } else {
         return new THREE.MeshLambertMaterial({map: texture, side: THREE.SingleSide});
     }
@@ -31,7 +41,14 @@ export function init_textures() {
         for(let cimg of resources[cdir]) {
             let ikey = cimg.substring(0, cimg.length-4); //lop off extension
             let tex = load_texture('resources/'+cdir+'/'+cimg);
-            mat_map[ikey] = make_material(tex, cdir);
+            if(cdir == 'grid') { /// special case
+                const [ normal, highlight, selected ] = make_material(tex, cdir);
+                mat_map[ikey] = normal;
+                mat_map[`${ikey}_highlighted`] = highlight;
+                mat_map[`${ikey}_selected`] = selected;
+            } else {
+                mat_map[ikey] = make_material(tex, cdir);
+            }
         }
     }
     load_special();
