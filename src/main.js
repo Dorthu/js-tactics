@@ -96,6 +96,14 @@ window.addEventListener('keydown', (e) => {
         cpos++;
         if(cpos > 2) { cpos = 0; }
         cam.position(cpos);
+    } else if(e.keyCode == 38) { /// up arrow
+        cam.camera.position.z -= 1;
+    } else if(e.keyCode == 40) { /// down arrow
+        cam.camera.position.z += 1;
+    } else if(e.keyCode == 39) { /// left arrow?
+        cam.camera.position.x += 1;
+    } else if(e.keyCode == 37) { /// right arrow?
+        cam.camera.position.x -= 1;
     }
 });
 
