@@ -31,9 +31,9 @@ export default class TurnController {
             this.scene.gamedata.cam.camera.position.x += .1;
         }
         if(mouse.y < -0.9) {
-            this.scene.gamedata.cam.camera.position.y -= .1;
+            this.scene.gamedata.cam.camera.position.z += .1;
         } else if(mouse.y > 0.9) {
-            this.scene.gamedata.cam.camera.position.y += .1;
+            this.scene.gamedata.cam.camera.position.z -= .1;
         }
     }
 
