@@ -12,10 +12,29 @@ export default class TurnController {
 
     tick() {
         this._do_tracking();
+        this._do_camera();
     }
 
     click(e) {
         this._do_selection(e);
+    }
+
+    /*
+     * Moves camera when the mouse gets near the edges of the screen
+     */
+    _do_camera() {
+        const mouse = this.scene.gamedata.mouse;
+        console.log(mouse);
+        if(mouse.x < -0.9) {
+            this.scene.gamedata.cam.camera.position.x -= .1;
+        } else if(mouse.x > 0.9) {
+            this.scene.gamedata.cam.camera.position.x += .1;
+        }
+        if(mouse.y < -0.9) {
+            this.scene.gamedata.cam.camera.position.y -= .1;
+        } else if(mouse.y > 0.9) {
+            this.scene.gamedata.cam.camera.position.y += .1;
+        }
     }
 
     /*
